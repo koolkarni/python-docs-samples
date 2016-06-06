@@ -25,19 +25,13 @@ from google.appengine.ext import ndb
 
 import webapp2
 
-
-class Photo(ndb.Model):
-    title = ndb.StringProperty()
-    full_size_image = ndb.BlobProperty()
-
-
 class Thumbnailer(webapp2.RequestHandler):
     def get(self):
-        if self.request.get("id"):
-            photo = Photo.get_by_id(int(self.request.get("id")))
+        if self.request.get(""):
+            photo = "gs://project-2056124891335735143.appspot.com/images/VXNlcjo3B1Zl2aA7.jpg"
 
             if photo:
-                img = images.Image(photo.full_size_image)
+                img = images.Image(photo)
                 img.resize(width=80, height=100)
                 img.im_feeling_lucky()
                 thumbnail = img.execute_transforms(output_encoding=images.JPEG)
